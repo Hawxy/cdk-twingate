@@ -17,8 +17,8 @@ new TwingateConnector(stack, 'Test-Connector', {
   twingateCredentials: {
     secretsManager: {
       secret: secret,
-      accessToken: 'ACCESS_TOKEN',
-      refreshToken: 'REFRESH_TOKEN',
+      accessTokenKey: 'ACCESS_TOKEN',
+      refreshTokenKey: 'REFRESH_TOKEN',
     },
   },
 });

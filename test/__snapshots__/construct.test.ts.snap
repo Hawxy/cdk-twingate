@@ -536,7 +536,7 @@ exports[`Snapshot 1`] = `
       },
       "Type": "AWS::EC2::VPCGatewayAttachment",
     },
-    "TestConnectorTwingateHost69875C0F53c14473d6a572ad": {
+    "TestConnectorTwingateHost69875C0Fb2757dfb27b3c901": {
       "DependsOn": [
         "TestConnectorTwingateHostInstanceRoleDefaultPolicy1C39734E",
         "TestConnectorTwingateHostInstanceRoleF5711471",
@@ -581,6 +581,7 @@ exports[`Snapshot 1`] = `
               [
                 "#!/bin/bash
 sudo mkdir -p /etc/twingate/
+sudo snap install aws-cli --classic
 echo TWINGATE_URL="https://inxsoftware.twingate.com" > /etc/twingate/connector.conf
 echo TWINGATE_ACCESS_TOKEN=$(aws secretsmanager get-secret-value --region ap-southeast-2 --secret-id arn:",
                 {

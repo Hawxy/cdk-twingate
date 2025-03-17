@@ -128,16 +128,16 @@ const secretsManagerKeys: SecretsManagerKeys = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#cdk-twingate.SecretsManagerKeys.property.accessToken">accessToken</a></code> | <code>string</code> | The key of the access token value located within the provided secret. |
-| <code><a href="#cdk-twingate.SecretsManagerKeys.property.refreshToken">refreshToken</a></code> | <code>string</code> | The key of the refresh token value located within the provided secret. |
+| <code><a href="#cdk-twingate.SecretsManagerKeys.property.accessTokenKey">accessTokenKey</a></code> | <code>string</code> | The key of the access token value located within the provided secret. |
+| <code><a href="#cdk-twingate.SecretsManagerKeys.property.refreshTokenKey">refreshTokenKey</a></code> | <code>string</code> | The key of the refresh token value located within the provided secret. |
 | <code><a href="#cdk-twingate.SecretsManagerKeys.property.secret">secret</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Secret manager location where the tailscale auth key is stored. |
 
 ---
 
-##### `accessToken`<sup>Required</sup> <a name="accessToken" id="cdk-twingate.SecretsManagerKeys.property.accessToken"></a>
+##### `accessTokenKey`<sup>Required</sup> <a name="accessTokenKey" id="cdk-twingate.SecretsManagerKeys.property.accessTokenKey"></a>
 
 ```typescript
-public readonly accessToken: string;
+public readonly accessTokenKey: string;
 ```
 
 - *Type:* string
@@ -146,10 +146,10 @@ The key of the access token value located within the provided secret.
 
 ---
 
-##### `refreshToken`<sup>Required</sup> <a name="refreshToken" id="cdk-twingate.SecretsManagerKeys.property.refreshToken"></a>
+##### `refreshTokenKey`<sup>Required</sup> <a name="refreshTokenKey" id="cdk-twingate.SecretsManagerKeys.property.refreshTokenKey"></a>
 
 ```typescript
-public readonly refreshToken: string;
+public readonly refreshTokenKey: string;
 ```
 
 - *Type:* string
@@ -364,15 +364,15 @@ const unsafeStringKeys: UnsafeStringKeys = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#cdk-twingate.UnsafeStringKeys.property.unsafeStringAccessToken">unsafeStringAccessToken</a></code> | <code>string</code> | Provides an access token as a plaintext string. |
-| <code><a href="#cdk-twingate.UnsafeStringKeys.property.unsafeStringRefreshToken">unsafeStringRefreshToken</a></code> | <code>string</code> | Provides an api key as a plaintext string. |
+| <code><a href="#cdk-twingate.UnsafeStringKeys.property.accessToken">accessToken</a></code> | <code>string</code> | Provides an access token as a plaintext string. |
+| <code><a href="#cdk-twingate.UnsafeStringKeys.property.refreshToken">refreshToken</a></code> | <code>string</code> | Provides an api key as a plaintext string. |
 
 ---
 
-##### `unsafeStringAccessToken`<sup>Required</sup> <a name="unsafeStringAccessToken" id="cdk-twingate.UnsafeStringKeys.property.unsafeStringAccessToken"></a>
+##### `accessToken`<sup>Required</sup> <a name="accessToken" id="cdk-twingate.UnsafeStringKeys.property.accessToken"></a>
 
 ```typescript
-public readonly unsafeStringAccessToken: string;
+public readonly accessToken: string;
 ```
 
 - *Type:* string
@@ -381,10 +381,10 @@ Provides an access token as a plaintext string.
 
 ---
 
-##### `unsafeStringRefreshToken`<sup>Required</sup> <a name="unsafeStringRefreshToken" id="cdk-twingate.UnsafeStringKeys.property.unsafeStringRefreshToken"></a>
+##### `refreshToken`<sup>Required</sup> <a name="refreshToken" id="cdk-twingate.UnsafeStringKeys.property.refreshToken"></a>
 
 ```typescript
-public readonly unsafeStringRefreshToken: string;
+public readonly refreshToken: string;
 ```
 
 - *Type:* string

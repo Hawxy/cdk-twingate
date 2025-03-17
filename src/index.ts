@@ -20,11 +20,11 @@ export interface SecretsManagerKeys {
   /**
    * The key of the access token value located within the provided secret.
    */
-  readonly accessToken: string;
+  readonly accessTokenKey: string;
   /**
    * The key of the refresh token value located within the provided secret.
    */
-  readonly refreshToken: string;
+  readonly refreshTokenKey: string;
 }
 
 export interface UnsafeStringKeys {
@@ -122,6 +122,7 @@ export class TwingateConnector extends Construct {
 
     const userData = [
       'sudo mkdir -p /etc/twingate/',
+      'sudo snap install aws-cli --classic',
       'echo TWINGATE_URL="https://inxsoftware.twingate.com" > /etc/twingate/connector.conf',
       `echo TWINGATE_ACCESS_TOKEN=${this.computeCredentials(twingateCredentials, CredentialType.AccessToken)} >> /etc/twingate/connector.conf`,
       `echo TWINGATE_REFRESH_TOKEN=${this.computeCredentials(twingateCredentials, CredentialType.RefreshToken)} >> /etc/twingate/connector.conf`,
@@ -162,7 +163,7 @@ export class TwingateConnector extends Construct {
         : credentials.unsafeStringKeys.refreshToken;
     } else if (credentials.secretsManager) {
       const sm = credentials.secretsManager;
-      const lookup = credentialType == CredentialType.AccessToken ? sm.accessToken : sm.refreshToken;
+      const lookup = credentialType == CredentialType.AccessToken ? sm.accessTokenKey : sm.refreshTokenKey;
       return `$(aws secretsmanager get-secret-value --region ${sm.secret.env.region} --secret-id ${sm.secret.secretArn} --query SecretString --output text | jq '."${lookup}"')`;
     } else {
       throw new Error('No Twingate credentials set');
