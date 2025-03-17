@@ -7,7 +7,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   defaultReleaseBranch: 'main',
   jsiiVersion: '~5.8.0',
   name: 'cdk-twingate',
-  majorVersion: 2,
+  majorVersion: 1,
   projenrcTs: true,
   repositoryUrl: 'https://github.com/Hawxy/cdk-twingate.git',
   license: 'Apache-2.0',
