@@ -16,12 +16,12 @@ JS/TS: `npm i cdk-twingate -D`
 The Twingate credentials can be passed in via Secrets Manager (Recommended) or as a hardcoded string.
 
 ```typescript
-import { TailscaleBastion } from 'cdk-tailscale-bastion';
+import { TwingateConnector } from 'cdk-twingate';
 
 // Secrets Manager
 const secret = Secret.fromSecretNameV2(stack, 'ApiSecrets', 'twingate-connector-1');
 
-const bastion = new TwingateConnector(stack, 'TwingateConnector-1', {
+const connector = new TwingateConnector(stack, 'TwingateConnector-1', {
   vpc,
   twingateCredentials: {
     secretsManager: {
@@ -34,4 +34,4 @@ const bastion = new TwingateConnector(stack, 'TwingateConnector-1', {
 
 ```
 
-Whatever resource you intend to reach should permit connections from the bastion on the relevant port, naturally. 
+Whatever resource you intend to reach should permit connections from the EC2 on the relevant port, naturally. 
