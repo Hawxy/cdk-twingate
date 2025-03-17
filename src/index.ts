@@ -14,7 +14,7 @@ import { Construct } from 'constructs';
 
 export interface SecretsManagerKeys {
   /**
-  * Secret manager location where the tailscale auth key is stored. Must be in the standard key/value JSON format.
+  * Secret manager location where the twingate auth key is stored. Must be in the standard key/value JSON format.
   */
   readonly secret: ISecret;
   /**
@@ -41,12 +41,12 @@ export interface UnsafeStringKeys {
 
 export interface TwingateCredentials {
   /**
-   * Fetches the Auth Key from secrets manager. This value will be fetched during bastion startup.
+   * Fetches the credentials from secrets manager. This value will be fetched during EC2 startup.
    */
   readonly secretsManager?: SecretsManagerKeys;
   /**
    * Provides credentials as plaintext strings.
-   * CAUTION: This option will expose the secrets in your CDK template.
+   * CAUTION: This option will expose the credentials in your CDK template.
    */
   readonly unsafeStringKeys?: UnsafeStringKeys;
 

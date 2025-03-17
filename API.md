@@ -130,7 +130,7 @@ const secretsManagerKeys: SecretsManagerKeys = { ... }
 | --- | --- | --- |
 | <code><a href="#cdk-twingate.SecretsManagerKeys.property.accessTokenKey">accessTokenKey</a></code> | <code>string</code> | The key of the access token value located within the provided secret. |
 | <code><a href="#cdk-twingate.SecretsManagerKeys.property.refreshTokenKey">refreshTokenKey</a></code> | <code>string</code> | The key of the refresh token value located within the provided secret. |
-| <code><a href="#cdk-twingate.SecretsManagerKeys.property.secret">secret</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Secret manager location where the tailscale auth key is stored. |
+| <code><a href="#cdk-twingate.SecretsManagerKeys.property.secret">secret</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Secret manager location where the twingate auth key is stored. |
 
 ---
 
@@ -166,7 +166,7 @@ public readonly secret: ISecret;
 
 - *Type:* aws-cdk-lib.aws_secretsmanager.ISecret
 
-Secret manager location where the tailscale auth key is stored.
+Secret manager location where the twingate auth key is stored.
 
 Must be in the standard key/value JSON format.
 
@@ -317,7 +317,7 @@ const twingateCredentials: TwingateCredentials = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#cdk-twingate.TwingateCredentials.property.secretsManager">secretsManager</a></code> | <code><a href="#cdk-twingate.SecretsManagerKeys">SecretsManagerKeys</a></code> | Fetches the Auth Key from secrets manager. |
+| <code><a href="#cdk-twingate.TwingateCredentials.property.secretsManager">secretsManager</a></code> | <code><a href="#cdk-twingate.SecretsManagerKeys">SecretsManagerKeys</a></code> | Fetches the credentials from secrets manager. |
 | <code><a href="#cdk-twingate.TwingateCredentials.property.unsafeStringKeys">unsafeStringKeys</a></code> | <code><a href="#cdk-twingate.UnsafeStringKeys">UnsafeStringKeys</a></code> | Provides credentials as plaintext strings. |
 
 ---
@@ -330,9 +330,9 @@ public readonly secretsManager: SecretsManagerKeys;
 
 - *Type:* <a href="#cdk-twingate.SecretsManagerKeys">SecretsManagerKeys</a>
 
-Fetches the Auth Key from secrets manager.
+Fetches the credentials from secrets manager.
 
-This value will be fetched during bastion startup.
+This value will be fetched during EC2 startup.
 
 ---
 
@@ -346,7 +346,7 @@ public readonly unsafeStringKeys: UnsafeStringKeys;
 
 Provides credentials as plaintext strings.
 
-CAUTION: This option will expose the secrets in your CDK template.
+CAUTION: This option will expose the credentials in your CDK template.
 
 ---
 

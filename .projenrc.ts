@@ -13,11 +13,13 @@ const project = new awscdk.AwsCdkConstructLibrary({
   license: 'Apache-2.0',
   stability: 'stable',
   depsUpgradeOptions: { workflowOptions: { schedule: UpgradeDependenciesSchedule.MONTHLY } },
-
-  // deps: [],                /* Runtime dependencies of this module. */
-  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
-  // devDeps: [],             /* Build dependencies for this module. */
-  // packageName: undefined,  /* The "name" in package.json. */
+  keywords: [
+    'aws',
+    'cdk',
+    'bastion',
+    'twingate',
+    'vpc',
+  ],
 });
 
 project.gitignore.addPatterns('cdk.out/');
