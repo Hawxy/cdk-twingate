@@ -1,0 +1,748 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot 1`] = `
+{
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "MyVpcF9F0CA6F": {
+      "Properties": {
+        "CidrBlock": "10.0.0.0/16",
+        "EnableDnsHostnames": true,
+        "EnableDnsSupport": true,
+        "InstanceTenancy": "default",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "MyStack/MyVpc",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::VPC",
+    },
+    "MyVpcIGW5C4A4F63": {
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "MyStack/MyVpc",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::InternetGateway",
+    },
+    "MyVpcPrivateSubnet1DefaultRouteA8CDE2FA": {
+      "Properties": {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "NatGatewayId": {
+          "Ref": "MyVpcPublicSubnet1NATGatewayAD3400C1",
+        },
+        "RouteTableId": {
+          "Ref": "MyVpcPrivateSubnet1RouteTable8819E6E2",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "MyVpcPrivateSubnet1RouteTable8819E6E2": {
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "MyStack/MyVpc/PrivateSubnet1",
+          },
+        ],
+        "VpcId": {
+          "Ref": "MyVpcF9F0CA6F",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "MyVpcPrivateSubnet1RouteTableAssociation56D38C7E": {
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "MyVpcPrivateSubnet1RouteTable8819E6E2",
+        },
+        "SubnetId": {
+          "Ref": "MyVpcPrivateSubnet1Subnet5057CF7E",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "MyVpcPrivateSubnet1Subnet5057CF7E": {
+      "Properties": {
+        "AvailabilityZone": "dummy1a",
+        "CidrBlock": "10.0.96.0/19",
+        "MapPublicIpOnLaunch": false,
+        "Tags": [
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Private",
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Private",
+          },
+          {
+            "Key": "Name",
+            "Value": "MyStack/MyVpc/PrivateSubnet1",
+          },
+        ],
+        "VpcId": {
+          "Ref": "MyVpcF9F0CA6F",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "MyVpcPrivateSubnet2DefaultRoute9CE96294": {
+      "Properties": {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "NatGatewayId": {
+          "Ref": "MyVpcPublicSubnet2NATGateway91BFBEC9",
+        },
+        "RouteTableId": {
+          "Ref": "MyVpcPrivateSubnet2RouteTableCEDCEECE",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "MyVpcPrivateSubnet2RouteTableAssociation86A610DA": {
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "MyVpcPrivateSubnet2RouteTableCEDCEECE",
+        },
+        "SubnetId": {
+          "Ref": "MyVpcPrivateSubnet2Subnet0040C983",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "MyVpcPrivateSubnet2RouteTableCEDCEECE": {
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "MyStack/MyVpc/PrivateSubnet2",
+          },
+        ],
+        "VpcId": {
+          "Ref": "MyVpcF9F0CA6F",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "MyVpcPrivateSubnet2Subnet0040C983": {
+      "Properties": {
+        "AvailabilityZone": "dummy1b",
+        "CidrBlock": "10.0.128.0/19",
+        "MapPublicIpOnLaunch": false,
+        "Tags": [
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Private",
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Private",
+          },
+          {
+            "Key": "Name",
+            "Value": "MyStack/MyVpc/PrivateSubnet2",
+          },
+        ],
+        "VpcId": {
+          "Ref": "MyVpcF9F0CA6F",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "MyVpcPrivateSubnet3DefaultRouteEC11C0C5": {
+      "Properties": {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "NatGatewayId": {
+          "Ref": "MyVpcPublicSubnet3NATGatewayD4B50EBE",
+        },
+        "RouteTableId": {
+          "Ref": "MyVpcPrivateSubnet3RouteTableB790927C",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "MyVpcPrivateSubnet3RouteTableAssociationD951741C": {
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "MyVpcPrivateSubnet3RouteTableB790927C",
+        },
+        "SubnetId": {
+          "Ref": "MyVpcPrivateSubnet3Subnet772D6AD7",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "MyVpcPrivateSubnet3RouteTableB790927C": {
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "MyStack/MyVpc/PrivateSubnet3",
+          },
+        ],
+        "VpcId": {
+          "Ref": "MyVpcF9F0CA6F",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "MyVpcPrivateSubnet3Subnet772D6AD7": {
+      "Properties": {
+        "AvailabilityZone": "dummy1c",
+        "CidrBlock": "10.0.160.0/19",
+        "MapPublicIpOnLaunch": false,
+        "Tags": [
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Private",
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Private",
+          },
+          {
+            "Key": "Name",
+            "Value": "MyStack/MyVpc/PrivateSubnet3",
+          },
+        ],
+        "VpcId": {
+          "Ref": "MyVpcF9F0CA6F",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "MyVpcPublicSubnet1DefaultRoute95FDF9EB": {
+      "DependsOn": [
+        "MyVpcVPCGW488ACE0D",
+      ],
+      "Properties": {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": {
+          "Ref": "MyVpcIGW5C4A4F63",
+        },
+        "RouteTableId": {
+          "Ref": "MyVpcPublicSubnet1RouteTableC46AB2F4",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "MyVpcPublicSubnet1EIP096967CB": {
+      "Properties": {
+        "Domain": "vpc",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "MyStack/MyVpc/PublicSubnet1",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::EIP",
+    },
+    "MyVpcPublicSubnet1NATGatewayAD3400C1": {
+      "DependsOn": [
+        "MyVpcPublicSubnet1DefaultRoute95FDF9EB",
+        "MyVpcPublicSubnet1RouteTableAssociation2ECEE1CB",
+      ],
+      "Properties": {
+        "AllocationId": {
+          "Fn::GetAtt": [
+            "MyVpcPublicSubnet1EIP096967CB",
+            "AllocationId",
+          ],
+        },
+        "SubnetId": {
+          "Ref": "MyVpcPublicSubnet1SubnetF6608456",
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "MyStack/MyVpc/PublicSubnet1",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::NatGateway",
+    },
+    "MyVpcPublicSubnet1RouteTableAssociation2ECEE1CB": {
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "MyVpcPublicSubnet1RouteTableC46AB2F4",
+        },
+        "SubnetId": {
+          "Ref": "MyVpcPublicSubnet1SubnetF6608456",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "MyVpcPublicSubnet1RouteTableC46AB2F4": {
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "MyStack/MyVpc/PublicSubnet1",
+          },
+        ],
+        "VpcId": {
+          "Ref": "MyVpcF9F0CA6F",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "MyVpcPublicSubnet1SubnetF6608456": {
+      "Properties": {
+        "AvailabilityZone": "dummy1a",
+        "CidrBlock": "10.0.0.0/19",
+        "MapPublicIpOnLaunch": true,
+        "Tags": [
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Public",
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public",
+          },
+          {
+            "Key": "Name",
+            "Value": "MyStack/MyVpc/PublicSubnet1",
+          },
+        ],
+        "VpcId": {
+          "Ref": "MyVpcF9F0CA6F",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "MyVpcPublicSubnet2DefaultRoute052936F6": {
+      "DependsOn": [
+        "MyVpcVPCGW488ACE0D",
+      ],
+      "Properties": {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": {
+          "Ref": "MyVpcIGW5C4A4F63",
+        },
+        "RouteTableId": {
+          "Ref": "MyVpcPublicSubnet2RouteTable1DF17386",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "MyVpcPublicSubnet2EIP8CCBA239": {
+      "Properties": {
+        "Domain": "vpc",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "MyStack/MyVpc/PublicSubnet2",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::EIP",
+    },
+    "MyVpcPublicSubnet2NATGateway91BFBEC9": {
+      "DependsOn": [
+        "MyVpcPublicSubnet2DefaultRoute052936F6",
+        "MyVpcPublicSubnet2RouteTableAssociation227DE78D",
+      ],
+      "Properties": {
+        "AllocationId": {
+          "Fn::GetAtt": [
+            "MyVpcPublicSubnet2EIP8CCBA239",
+            "AllocationId",
+          ],
+        },
+        "SubnetId": {
+          "Ref": "MyVpcPublicSubnet2Subnet492B6BFB",
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "MyStack/MyVpc/PublicSubnet2",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::NatGateway",
+    },
+    "MyVpcPublicSubnet2RouteTable1DF17386": {
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "MyStack/MyVpc/PublicSubnet2",
+          },
+        ],
+        "VpcId": {
+          "Ref": "MyVpcF9F0CA6F",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "MyVpcPublicSubnet2RouteTableAssociation227DE78D": {
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "MyVpcPublicSubnet2RouteTable1DF17386",
+        },
+        "SubnetId": {
+          "Ref": "MyVpcPublicSubnet2Subnet492B6BFB",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "MyVpcPublicSubnet2Subnet492B6BFB": {
+      "Properties": {
+        "AvailabilityZone": "dummy1b",
+        "CidrBlock": "10.0.32.0/19",
+        "MapPublicIpOnLaunch": true,
+        "Tags": [
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Public",
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public",
+          },
+          {
+            "Key": "Name",
+            "Value": "MyStack/MyVpc/PublicSubnet2",
+          },
+        ],
+        "VpcId": {
+          "Ref": "MyVpcF9F0CA6F",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "MyVpcPublicSubnet3DefaultRoute3A83AB36": {
+      "DependsOn": [
+        "MyVpcVPCGW488ACE0D",
+      ],
+      "Properties": {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": {
+          "Ref": "MyVpcIGW5C4A4F63",
+        },
+        "RouteTableId": {
+          "Ref": "MyVpcPublicSubnet3RouteTable15028F08",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "MyVpcPublicSubnet3EIPC5ACADAB": {
+      "Properties": {
+        "Domain": "vpc",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "MyStack/MyVpc/PublicSubnet3",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::EIP",
+    },
+    "MyVpcPublicSubnet3NATGatewayD4B50EBE": {
+      "DependsOn": [
+        "MyVpcPublicSubnet3DefaultRoute3A83AB36",
+        "MyVpcPublicSubnet3RouteTableAssociation5C27DDA4",
+      ],
+      "Properties": {
+        "AllocationId": {
+          "Fn::GetAtt": [
+            "MyVpcPublicSubnet3EIPC5ACADAB",
+            "AllocationId",
+          ],
+        },
+        "SubnetId": {
+          "Ref": "MyVpcPublicSubnet3Subnet57EEE236",
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "MyStack/MyVpc/PublicSubnet3",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::NatGateway",
+    },
+    "MyVpcPublicSubnet3RouteTable15028F08": {
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "MyStack/MyVpc/PublicSubnet3",
+          },
+        ],
+        "VpcId": {
+          "Ref": "MyVpcF9F0CA6F",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "MyVpcPublicSubnet3RouteTableAssociation5C27DDA4": {
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "MyVpcPublicSubnet3RouteTable15028F08",
+        },
+        "SubnetId": {
+          "Ref": "MyVpcPublicSubnet3Subnet57EEE236",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "MyVpcPublicSubnet3Subnet57EEE236": {
+      "Properties": {
+        "AvailabilityZone": "dummy1c",
+        "CidrBlock": "10.0.64.0/19",
+        "MapPublicIpOnLaunch": true,
+        "Tags": [
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Public",
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public",
+          },
+          {
+            "Key": "Name",
+            "Value": "MyStack/MyVpc/PublicSubnet3",
+          },
+        ],
+        "VpcId": {
+          "Ref": "MyVpcF9F0CA6F",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "MyVpcVPCGW488ACE0D": {
+      "Properties": {
+        "InternetGatewayId": {
+          "Ref": "MyVpcIGW5C4A4F63",
+        },
+        "VpcId": {
+          "Ref": "MyVpcF9F0CA6F",
+        },
+      },
+      "Type": "AWS::EC2::VPCGatewayAttachment",
+    },
+    "TestConnectorTwingateConnector7735BD0153c14473d6a572ad": {
+      "DependsOn": [
+        "TestConnectorTwingateConnectorInstanceRoleDefaultPolicy5EBA0E89",
+        "TestConnectorTwingateConnectorInstanceRoleE049A4E8",
+      ],
+      "Properties": {
+        "AvailabilityZone": "dummy1a",
+        "IamInstanceProfile": {
+          "Ref": "TestConnectorTwingateConnectorInstanceProfileA8DC6545",
+        },
+        "ImageId": "ami-1234",
+        "InstanceType": "t3a.micro",
+        "LaunchTemplate": {
+          "LaunchTemplateName": "TwingateConnectorLaunchTemplate",
+          "Version": {
+            "Fn::GetAtt": [
+              "TestConnectorTwingateConnectorLaunchTemplateB52347CA",
+              "LatestVersionNumber",
+            ],
+          },
+        },
+        "SecurityGroupIds": [
+          {
+            "Fn::GetAtt": [
+              "TestConnectorTwingateConnectorInstanceSecurityGroup86B0CB67",
+              "GroupId",
+            ],
+          },
+        ],
+        "SubnetId": {
+          "Ref": "MyVpcPrivateSubnet1Subnet5057CF7E",
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "MyStack/Test-Connector/TwingateConnector",
+          },
+        ],
+        "UserData": {
+          "Fn::Base64": {
+            "Fn::Join": [
+              "",
+              [
+                "#!/bin/bash
+sudo mkdir -p /etc/twingate/
+echo TWINGATE_URL="https://inxsoftware.twingate.com" > /etc/twingate/connector.conf
+echo TWINGATE_ACCESS_TOKEN=$(aws secretsmanager get-secret-value --region ap-southeast-2 --secret-id arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":secretsmanager:ap-southeast-2:865078226113:secret:twingate --query SecretString --output text | jq '."ACCESS_TOKEN"') >> /etc/twingate/connector.conf
+echo TWINGATE_REFRESH_TOKEN=$(aws secretsmanager get-secret-value --region ap-southeast-2 --secret-id arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":secretsmanager:ap-southeast-2:865078226113:secret:twingate --query SecretString --output text | jq '."REFRESH_TOKEN"') >> /etc/twingate/connector.conf
+echo TWINGATE_LABEL_HOSTNAME=$(curl http://169.254.169.254/latest/meta-data/local-hostname)
+sudo systemctl enable --now twingate-connector",
+              ],
+            ],
+          },
+        },
+      },
+      "Type": "AWS::EC2::Instance",
+    },
+    "TestConnectorTwingateConnectorInstanceProfileA8DC6545": {
+      "Properties": {
+        "Roles": [
+          {
+            "Ref": "TestConnectorTwingateConnectorInstanceRoleE049A4E8",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::InstanceProfile",
+    },
+    "TestConnectorTwingateConnectorInstanceRoleDefaultPolicy5EBA0E89": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":secretsmanager:ap-southeast-2:865078226113:secret:twingate-??????",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "TestConnectorTwingateConnectorInstanceRoleDefaultPolicy5EBA0E89",
+        "Roles": [
+          {
+            "Ref": "TestConnectorTwingateConnectorInstanceRoleE049A4E8",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "TestConnectorTwingateConnectorInstanceRoleE049A4E8": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "ec2.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonSSMManagedInstanceCore",
+              ],
+            ],
+          },
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "MyStack/Test-Connector/TwingateConnector",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "TestConnectorTwingateConnectorInstanceSecurityGroup86B0CB67": {
+      "Properties": {
+        "GroupDescription": "MyStack/Test-Connector/TwingateConnector/InstanceSecurityGroup",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "MyStack/Test-Connector/TwingateConnector",
+          },
+        ],
+        "VpcId": {
+          "Ref": "MyVpcF9F0CA6F",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "TestConnectorTwingateConnectorLaunchTemplateB52347CA": {
+      "Properties": {
+        "LaunchTemplateData": {
+          "MetadataOptions": {
+            "HttpTokens": "required",
+          },
+        },
+        "LaunchTemplateName": "TwingateConnectorLaunchTemplate",
+      },
+      "Type": "AWS::EC2::LaunchTemplate",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
