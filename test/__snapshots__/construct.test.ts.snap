@@ -536,23 +536,23 @@ exports[`Snapshot 1`] = `
       },
       "Type": "AWS::EC2::VPCGatewayAttachment",
     },
-    "TestConnectorTwingateConnector7735BD0153c14473d6a572ad": {
+    "TestConnectorTwingateHost69875C0F53c14473d6a572ad": {
       "DependsOn": [
-        "TestConnectorTwingateConnectorInstanceRoleDefaultPolicy5EBA0E89",
-        "TestConnectorTwingateConnectorInstanceRoleE049A4E8",
+        "TestConnectorTwingateHostInstanceRoleDefaultPolicy1C39734E",
+        "TestConnectorTwingateHostInstanceRoleF5711471",
       ],
       "Properties": {
         "AvailabilityZone": "dummy1a",
         "IamInstanceProfile": {
-          "Ref": "TestConnectorTwingateConnectorInstanceProfileA8DC6545",
+          "Ref": "TestConnectorTwingateHostInstanceProfile32D553B5",
         },
         "ImageId": "ami-1234",
         "InstanceType": "t3a.micro",
         "LaunchTemplate": {
-          "LaunchTemplateName": "TwingateConnectorLaunchTemplate",
+          "LaunchTemplateName": "TwingateHostLaunchTemplate",
           "Version": {
             "Fn::GetAtt": [
-              "TestConnectorTwingateConnectorLaunchTemplateB52347CA",
+              "TestConnectorTwingateHostLaunchTemplate112E626C",
               "LatestVersionNumber",
             ],
           },
@@ -560,7 +560,7 @@ exports[`Snapshot 1`] = `
         "SecurityGroupIds": [
           {
             "Fn::GetAtt": [
-              "TestConnectorTwingateConnectorInstanceSecurityGroup86B0CB67",
+              "TestConnectorTwingateHostInstanceSecurityGroup6F4B7380",
               "GroupId",
             ],
           },
@@ -571,7 +571,7 @@ exports[`Snapshot 1`] = `
         "Tags": [
           {
             "Key": "Name",
-            "Value": "MyStack/Test-Connector/TwingateConnector",
+            "Value": "MyStack/Test-Connector/TwingateHost",
           },
         ],
         "UserData": {
@@ -601,17 +601,17 @@ sudo systemctl enable --now twingate-connector",
       },
       "Type": "AWS::EC2::Instance",
     },
-    "TestConnectorTwingateConnectorInstanceProfileA8DC6545": {
+    "TestConnectorTwingateHostInstanceProfile32D553B5": {
       "Properties": {
         "Roles": [
           {
-            "Ref": "TestConnectorTwingateConnectorInstanceRoleE049A4E8",
+            "Ref": "TestConnectorTwingateHostInstanceRoleF5711471",
           },
         ],
       },
       "Type": "AWS::IAM::InstanceProfile",
     },
-    "TestConnectorTwingateConnectorInstanceRoleDefaultPolicy5EBA0E89": {
+    "TestConnectorTwingateHostInstanceRoleDefaultPolicy1C39734E": {
       "Properties": {
         "PolicyDocument": {
           "Statement": [
@@ -637,16 +637,16 @@ sudo systemctl enable --now twingate-connector",
           ],
           "Version": "2012-10-17",
         },
-        "PolicyName": "TestConnectorTwingateConnectorInstanceRoleDefaultPolicy5EBA0E89",
+        "PolicyName": "TestConnectorTwingateHostInstanceRoleDefaultPolicy1C39734E",
         "Roles": [
           {
-            "Ref": "TestConnectorTwingateConnectorInstanceRoleE049A4E8",
+            "Ref": "TestConnectorTwingateHostInstanceRoleF5711471",
           },
         ],
       },
       "Type": "AWS::IAM::Policy",
     },
-    "TestConnectorTwingateConnectorInstanceRoleE049A4E8": {
+    "TestConnectorTwingateHostInstanceRoleF5711471": {
       "Properties": {
         "AssumeRolePolicyDocument": {
           "Statement": [
@@ -677,15 +677,15 @@ sudo systemctl enable --now twingate-connector",
         "Tags": [
           {
             "Key": "Name",
-            "Value": "MyStack/Test-Connector/TwingateConnector",
+            "Value": "MyStack/Test-Connector/TwingateHost",
           },
         ],
       },
       "Type": "AWS::IAM::Role",
     },
-    "TestConnectorTwingateConnectorInstanceSecurityGroup86B0CB67": {
+    "TestConnectorTwingateHostInstanceSecurityGroup6F4B7380": {
       "Properties": {
-        "GroupDescription": "MyStack/Test-Connector/TwingateConnector/InstanceSecurityGroup",
+        "GroupDescription": "MyStack/Test-Connector/TwingateHost/InstanceSecurityGroup",
         "SecurityGroupEgress": [
           {
             "CidrIp": "0.0.0.0/0",
@@ -696,7 +696,7 @@ sudo systemctl enable --now twingate-connector",
         "Tags": [
           {
             "Key": "Name",
-            "Value": "MyStack/Test-Connector/TwingateConnector",
+            "Value": "MyStack/Test-Connector/TwingateHost",
           },
         ],
         "VpcId": {
@@ -705,14 +705,14 @@ sudo systemctl enable --now twingate-connector",
       },
       "Type": "AWS::EC2::SecurityGroup",
     },
-    "TestConnectorTwingateConnectorLaunchTemplateB52347CA": {
+    "TestConnectorTwingateHostLaunchTemplate112E626C": {
       "Properties": {
         "LaunchTemplateData": {
           "MetadataOptions": {
             "HttpTokens": "required",
           },
         },
-        "LaunchTemplateName": "TwingateConnectorLaunchTemplate",
+        "LaunchTemplateName": "TwingateHostLaunchTemplate",
       },
       "Type": "AWS::EC2::LaunchTemplate",
     },

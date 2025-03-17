@@ -31,12 +31,12 @@ export interface UnsafeStringKeys {
   /**
    * Provides an access token as a plaintext string.
    */
-  readonly unsafeStringAccessToken: string;
+  readonly accessToken: string;
 
   /**
  * Provides an api key as a plaintext string.
  */
-  readonly unsafeStringRefreshToken: string;
+  readonly refreshToken: string;
 }
 
 export interface TwingateCredentials {
@@ -129,7 +129,7 @@ export class TwingateConnector extends Construct {
       'sudo systemctl enable --now twingate-connector',
     ];
 
-    const bastion = new Instance(this, 'TwingateConnector', {
+    const bastion = new Instance(this, 'TwingateHost', {
       vpc: vpc,
       vpcSubnets: subnetSelection,
       securityGroup: securityGroup,
@@ -151,10 +151,6 @@ export class TwingateConnector extends Construct {
       twingateCredentials.secretsManager.secret.grantRead(bastion);
     }
 
-    /*bastion.connections.allowToAnyIpv4(Port.tcp(443), 'Basic communication with the Twingate Controller and Relay infrastructure');
-    bastion.connections.allowToAnyIpv4(Port.tcpRange(30000, 31000), 'Opening connections with Twingate Relay infrastructure in case peer-to-peer is unavailable');
-    bastion.connections.allowToAnyIpv4(Port.udpRange(1, 65535), 'Allows for peer-to-peer connectivity for optimal performance');*/
-
     this.bastion = bastion;
 
   }
@@ -162,8 +158,8 @@ export class TwingateConnector extends Construct {
   private computeCredentials(credentials: TwingateCredentials, credentialType: CredentialType) {
     if (credentials.unsafeStringKeys) {
       return credentialType == CredentialType.AccessToken
-        ? credentials.unsafeStringKeys.unsafeStringAccessToken
-        : credentials.unsafeStringKeys.unsafeStringRefreshToken;
+        ? credentials.unsafeStringKeys.accessToken
+        : credentials.unsafeStringKeys.refreshToken;
     } else if (credentials.secretsManager) {
       const sm = credentials.secretsManager;
       const lookup = credentialType == CredentialType.AccessToken ? sm.accessToken : sm.refreshToken;
