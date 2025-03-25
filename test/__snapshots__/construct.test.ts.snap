@@ -10,6 +10,90 @@ exports[`Snapshot 1`] = `
     },
   },
   "Resources": {
+    "CustomVpcRestrictDefaultSGCustomResourceProviderHandlerDC833E5E": {
+      "DependsOn": [
+        "CustomVpcRestrictDefaultSGCustomResourceProviderRole26592FE0",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": "cdk-hnb659fds-assets-865078226113-ap-southeast-2",
+          "S3Key": "7f18a11296f35510ee16538afec983ed6312e12afbf81b777089a9f8e34e2474.zip",
+        },
+        "Description": "Lambda function for removing all inbound/outbound rules from the VPC default security group",
+        "Handler": "__entrypoint__.handler",
+        "MemorySize": 128,
+        "Role": {
+          "Fn::GetAtt": [
+            "CustomVpcRestrictDefaultSGCustomResourceProviderRole26592FE0",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs18.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "CustomVpcRestrictDefaultSGCustomResourceProviderRole26592FE0": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Sub": "arn:\${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+          },
+        ],
+        "Policies": [
+          {
+            "PolicyDocument": {
+              "Statement": [
+                {
+                  "Action": [
+                    "ec2:AuthorizeSecurityGroupIngress",
+                    "ec2:AuthorizeSecurityGroupEgress",
+                    "ec2:RevokeSecurityGroupIngress",
+                    "ec2:RevokeSecurityGroupEgress",
+                  ],
+                  "Effect": "Allow",
+                  "Resource": [
+                    {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "arn:",
+                          {
+                            "Ref": "AWS::Partition",
+                          },
+                          ":ec2:ap-southeast-2:865078226113:security-group/",
+                          {
+                            "Fn::GetAtt": [
+                              "MyVpcF9F0CA6F",
+                              "DefaultSecurityGroup",
+                            ],
+                          },
+                        ],
+                      ],
+                    },
+                  ],
+                },
+              ],
+              "Version": "2012-10-17",
+            },
+            "PolicyName": "Inline",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
     "MyVpcF9F0CA6F": {
       "Properties": {
         "CidrBlock": "10.0.0.0/16",
@@ -525,6 +609,26 @@ exports[`Snapshot 1`] = `
       },
       "Type": "AWS::EC2::Subnet",
     },
+    "MyVpcRestrictDefaultSecurityGroupCustomResourceA4FCCD62": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "Account": "865078226113",
+        "DefaultSecurityGroupId": {
+          "Fn::GetAtt": [
+            "MyVpcF9F0CA6F",
+            "DefaultSecurityGroup",
+          ],
+        },
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "CustomVpcRestrictDefaultSGCustomResourceProviderHandlerDC833E5E",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::VpcRestrictDefaultSG",
+      "UpdateReplacePolicy": "Delete",
+    },
     "MyVpcVPCGW488ACE0D": {
       "Properties": {
         "InternetGatewayId": {
@@ -536,7 +640,7 @@ exports[`Snapshot 1`] = `
       },
       "Type": "AWS::EC2::VPCGatewayAttachment",
     },
-    "TestConnectorTwingateHost69875C0Fb2757dfb27b3c901": {
+    "TestConnectorTwingateHost69875C0F0df1e9b8d1b87cb4": {
       "DependsOn": [
         "TestConnectorTwingateHostInstanceRoleDefaultPolicy1C39734E",
         "TestConnectorTwingateHostInstanceRoleF5711471",
@@ -549,7 +653,7 @@ exports[`Snapshot 1`] = `
         "ImageId": "ami-1234",
         "InstanceType": "t3a.micro",
         "LaunchTemplate": {
-          "LaunchTemplateName": "TwingateHostLaunchTemplate",
+          "LaunchTemplateName": "MyStackTestConnectorTwingateHostLaunchTemplateBF8C685D",
           "Version": {
             "Fn::GetAtt": [
               "TestConnectorTwingateHostLaunchTemplate112E626C",
@@ -582,6 +686,7 @@ exports[`Snapshot 1`] = `
                 "#!/bin/bash
 sudo mkdir -p /etc/twingate/
 sudo snap install aws-cli --classic
+sudo snap install jq
 echo TWINGATE_URL="https://inxsoftware.twingate.com" > /etc/twingate/connector.conf
 echo TWINGATE_ACCESS_TOKEN=$(aws secretsmanager get-secret-value --region ap-southeast-2 --secret-id arn:",
                 {
@@ -713,7 +818,7 @@ sudo systemctl enable --now twingate-connector",
             "HttpTokens": "required",
           },
         },
-        "LaunchTemplateName": "TwingateHostLaunchTemplate",
+        "LaunchTemplateName": "MyStackTestConnectorTwingateHostLaunchTemplateBF8C685D",
       },
       "Type": "AWS::EC2::LaunchTemplate",
     },

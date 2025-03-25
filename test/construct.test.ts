@@ -4,7 +4,16 @@ import { Vpc } from 'aws-cdk-lib/aws-ec2';
 import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
 import { TwingateConnector } from '../src';
 
-const mockApp = new App();
+const mockApp = new App({
+  context: {
+    '@aws-cdk/aws-apigateway:usagePlanKeyOrderInsensitiveId': true,
+    '@aws-cdk/core:stackRelativeExports': true,
+    '@aws-cdk/customresources:installLatestAwsSdkDefault': false,
+    '@aws-cdk/aws-ec2:restrictDefaultSecurityGroup': true,
+    '@aws-cdk/aws-ec2:uniqueImdsv2TemplateName': true,
+    '@aws-cdk/aws-ec2:launchTemplateDefaultUserData': true,
+  },
+});
 const env = { region: 'ap-southeast-2', account: '865078226113' };
 const stack = new Stack(mockApp, 'MyStack', { env });
 
@@ -22,6 +31,7 @@ new TwingateConnector(stack, 'Test-Connector', {
     },
   },
 });
+
 
 const template = Template.fromStack(stack);
 

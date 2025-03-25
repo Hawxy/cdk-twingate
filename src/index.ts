@@ -123,6 +123,7 @@ export class TwingateConnector extends Construct {
     const userData = [
       'sudo mkdir -p /etc/twingate/',
       'sudo snap install aws-cli --classic',
+      'sudo snap install jq',
       'echo TWINGATE_URL="https://inxsoftware.twingate.com" > /etc/twingate/connector.conf',
       `echo TWINGATE_ACCESS_TOKEN=${this.computeCredentials(twingateCredentials, CredentialType.AccessToken)} >> /etc/twingate/connector.conf`,
       `echo TWINGATE_REFRESH_TOKEN=${this.computeCredentials(twingateCredentials, CredentialType.RefreshToken)} >> /etc/twingate/connector.conf`,
