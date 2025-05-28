@@ -187,6 +187,7 @@ const twingateConnectorProps: TwingateConnectorProps = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#cdk-twingate.TwingateConnectorProps.property.twingateCredentials">twingateCredentials</a></code> | <code><a href="#cdk-twingate.TwingateCredentials">TwingateCredentials</a></code> | Credential settings for the twingate auth keys. |
+| <code><a href="#cdk-twingate.TwingateConnectorProps.property.twingateDomain">twingateDomain</a></code> | <code>string</code> | The full domain of your Twingate instance, ie https://mycompany.twingate.com. |
 | <code><a href="#cdk-twingate.TwingateConnectorProps.property.vpc">vpc</a></code> | <code>aws-cdk-lib.aws_ec2.IVpc</code> | VPC to launch the instance in. |
 | <code><a href="#cdk-twingate.TwingateConnectorProps.property.availabilityZone">availabilityZone</a></code> | <code>string</code> | In which AZ to place the instance within the VPC. |
 | <code><a href="#cdk-twingate.TwingateConnectorProps.property.cpuType">cpuType</a></code> | <code>aws-cdk-lib.aws_ec2.AmazonLinuxCpuType</code> | CPU Type of the instance. |
@@ -208,6 +209,18 @@ public readonly twingateCredentials: TwingateCredentials;
 Credential settings for the twingate auth keys.
 
 One type must be used.
+
+---
+
+##### `twingateDomain`<sup>Required</sup> <a name="twingateDomain" id="cdk-twingate.TwingateConnectorProps.property.twingateDomain"></a>
+
+```typescript
+public readonly twingateDomain: string;
+```
+
+- *Type:* string
+
+The full domain of your Twingate instance, ie https://mycompany.twingate.com.
 
 ---
 

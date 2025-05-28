@@ -640,7 +640,7 @@ exports[`Snapshot 1`] = `
       },
       "Type": "AWS::EC2::VPCGatewayAttachment",
     },
-    "TestConnectorTwingateHost69875C0F0df1e9b8d1b87cb4": {
+    "TestConnectorTwingateHost69875C0Fe8a23ac8976dc5aa": {
       "DependsOn": [
         "TestConnectorTwingateHostInstanceRoleDefaultPolicy1C39734E",
         "TestConnectorTwingateHostInstanceRoleF5711471",
@@ -687,7 +687,7 @@ exports[`Snapshot 1`] = `
 sudo mkdir -p /etc/twingate/
 sudo snap install aws-cli --classic
 sudo snap install jq
-echo TWINGATE_URL="https://inxsoftware.twingate.com" > /etc/twingate/connector.conf
+echo TWINGATE_URL="https://mycompany.twingate.com" > /etc/twingate/connector.conf
 echo TWINGATE_ACCESS_TOKEN=$(aws secretsmanager get-secret-value --region ap-southeast-2 --secret-id arn:",
                 {
                   "Ref": "AWS::Partition",

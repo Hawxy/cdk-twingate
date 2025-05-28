@@ -57,6 +57,12 @@ export interface TwingateConnectorProps {
     * VPC to launch the instance in.
     */
   readonly vpc: IVpc;
+
+  /**
+   * The full domain of your Twingate instance, ie https://mycompany.twingate.com
+   */
+  readonly twingateDomain: string;
+
   /**
    * Credential settings for the twingate auth keys. One type must be used.
    */
@@ -102,7 +108,7 @@ export interface TwingateConnectorProps {
 
 enum CredentialType {
   AccessToken,
-  RefreshToken
+  RefreshToken,
 }
 
 export class TwingateConnector extends Construct {
@@ -111,6 +117,7 @@ export class TwingateConnector extends Construct {
     super(scope, id);
 
     const {
+      twingateDomain,
       twingateCredentials,
       vpc,
       availabilityZone,
@@ -124,7 +131,7 @@ export class TwingateConnector extends Construct {
       'sudo mkdir -p /etc/twingate/',
       'sudo snap install aws-cli --classic',
       'sudo snap install jq',
-      'echo TWINGATE_URL="https://inxsoftware.twingate.com" > /etc/twingate/connector.conf',
+      `echo TWINGATE_URL="${twingateDomain}" > /etc/twingate/connector.conf`,
       `echo TWINGATE_ACCESS_TOKEN=${this.computeCredentials(twingateCredentials, CredentialType.AccessToken)} >> /etc/twingate/connector.conf`,
       `echo TWINGATE_REFRESH_TOKEN=${this.computeCredentials(twingateCredentials, CredentialType.RefreshToken)} >> /etc/twingate/connector.conf`,
       'echo TWINGATE_LABEL_HOSTNAME=$(curl http://169.254.169.254/latest/meta-data/local-hostname)',
