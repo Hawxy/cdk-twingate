@@ -23,6 +23,7 @@ const secret = Secret.fromSecretNameV2(stack, 'ApiSecrets', 'twingate');
 
 new TwingateConnector(stack, 'Test-Connector', {
   vpc: vpc,
+  twingateDomain: 'https://mycompany.twingate.com',
   twingateCredentials: {
     secretsManager: {
       secret: secret,
