@@ -308,11 +308,11 @@ public readonly subnetSelection: SubnetSelection;
 ```
 
 - *Type:* aws-cdk-lib.aws_ec2.SubnetSelection
-- *Default:* PRIVATE subnets of the supplied VPC
+- *Default:* PUBLIC subnets of the supplied VPC
 
 Select the subnets to run the EC2 in.
 
-PRIVATE subnets are used by default for security purposes.
+PUBLIC subnets are used by default to support P2P connections.
 
 ---
 
