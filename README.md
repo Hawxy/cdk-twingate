@@ -7,6 +7,8 @@ This packages creates an AWS EC2 configured as a Twingate connector.
 
 Using Twingate to access your VPC permits high performance connectivity whilst avoiding SSH or the overhead & limitations of Session Manager.
 
+**This construct will deploy the connector into a public subnet by default in order to support P2P connections. Only outbound connections are permitted.**
+
 ## Installation
 
 JS/TS: `npm i cdk-twingate -D`

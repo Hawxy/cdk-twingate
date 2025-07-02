@@ -8,6 +8,7 @@ import {
   IVpc,
   MachineImage,
   SubnetSelection,
+  SubnetType,
 } from 'aws-cdk-lib/aws-ec2';
 import { ISecret } from 'aws-cdk-lib/aws-secretsmanager';
 import { Construct } from 'constructs';
@@ -81,9 +82,9 @@ export interface TwingateConnectorProps {
   readonly instanceName?: string;
   /**
    * Select the subnets to run the EC2 in.
-   * PRIVATE subnets are used by default for security purposes.
+   * PUBLIC subnets are used by default to support P2P connections.
    *
-   * @default - PRIVATE subnets of the supplied VPC
+   * @default - PUBLIC subnets of the supplied VPC
    */
   readonly subnetSelection?: SubnetSelection;
   /**
@@ -140,7 +141,7 @@ export class TwingateConnector extends Construct {
 
     const bastion = new Instance(this, 'TwingateHost', {
       vpc: vpc,
-      vpcSubnets: subnetSelection,
+      vpcSubnets: subnetSelection ?? { subnetType: SubnetType.PUBLIC },
       securityGroup: securityGroup,
       availabilityZone: availabilityZone,
       instanceName: instanceName,
@@ -151,7 +152,7 @@ export class TwingateConnector extends Construct {
       }),
       userDataCausesReplacement: true,
       requireImdsv2: true,
-      ssmSessionPermissions: true,
+      ssmSessionPermissions: true
     });
 
     bastion.userData.addCommands(...userData);
