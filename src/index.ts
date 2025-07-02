@@ -152,7 +152,7 @@ export class TwingateConnector extends Construct {
       }),
       userDataCausesReplacement: true,
       requireImdsv2: true,
-      ssmSessionPermissions: true
+      ssmSessionPermissions: true,
     });
 
     bastion.userData.addCommands(...userData);
